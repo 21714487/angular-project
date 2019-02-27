@@ -1,0 +1,41 @@
+cd ~/Project/angular-project
+ng generate component heroes
+cd heroes
+nano heroes.component.ts
+
+You always import the Component symbol from the Angular core library and annotate the component class with @Component.
+
+@Component is a decorator function that specifies the Angular metadata for the component.
+
+The CLI generated three metadata properties:
+
+  1.selector— the component's CSS element selector
+  2.templateUrl— the location of the component's template file.
+  3.styleUrls— the location of the component's private CSS styles.
+
+The CSS element selector, 'app-heroes', matches the name of the HTML element that identifies this component within a parent component's template.
+In the parent components HTML page when you add:
+<app-heroes></app-heroes>
+This should add the child: app-heroes HTML to the parents HTML page
+
+The ngOnInit is a lifecycle hook. Angular calls ngOnInit shortly after creating a component. It's a good place to put initialization logic.
+(Do the life cycle tutorial first)
+
+Always export the component class so you can import it elsewhere ... like in the AppModule.
+
+
+heroes.component.html:
+
+  <li *ngFor = "let hero of heroes" (click)="onSelect(hero)">
+
+The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.
+In this example
+  - <li> is the host element
+  - heroes is the list from the HeroesComponent class.
+  - hero holds the current hero object for each iteration through the list.
+
+The (click) is an example of Angular's event binding syntax.
+The parentheses around click tell Angular to listen for the <li> element's click event.
+When the user clicks in the <li>, Angular executes the onSelect(hero) expression.
+
+
